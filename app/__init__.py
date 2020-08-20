@@ -19,3 +19,5 @@ def create_app(config_type):
     from app.catalog import main
 
     flask_app.register_blueprint(main)
+
+    return flask_app
