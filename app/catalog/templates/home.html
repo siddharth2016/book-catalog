@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Books</title>
-</head>
-<body>
+{% extends 'layout.html' %}
 
-    {% for book in books %}
-        <img src="static/image/{{ book.image }}", alt="{{ book.image }}", height="200", width="200", class="img-rounded">
-        <h2>Book Name: {{ book.title }}</h2>
-        <p>Author: {{ book.author }}</p>
-        <p>Rating: {{ book.rating }}</p>
-        <p>Number of Pages: {{ book.num_pages }}</p>
-    {% endfor %}
-
-</body>
-</html>
+    {% block content %}
+        <div class="container books">
+            <div class="row">
+                {% for book in books %}
+                    <div class="col-md-4">
+                        <img src="static/image/{{ book.image }}", alt="{{ book.image }}", height="200", width="200", class="img-rounded">
+                        <h2>Book Name: {{ book.title }}</h2>
+                        <p>Author: {{ book.author }}</p>
+                        <p>Rating: {{ book.rating }}</p>
+                        <p>Number of Pages: {{ book.num_pages }}</p>
+                        <p>Publisher Id: <a href="{{ url_for('main.display_pub', publisher_id=book.pub_id) }}">{{ book.pub_id }}</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock content %}
