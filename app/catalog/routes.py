@@ -1,6 +1,9 @@
 from app.catalog import main
-
+from app.catalog.models import Book, Publication
+from flask import render_template
 
 @main.route('/')
-def sample():
-    return "Hello World"
+def display_books():
+    books = Book.query.all()
+
+    return render_template('home.html', books=books)
