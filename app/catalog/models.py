@@ -1,4 +1,4 @@
-from app import db
+from app import db  # from the app package __init__
 from datetime import datetime
 
 
@@ -23,7 +23,7 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(500), nullable=False, index=True)
     author = db.Column(db.String(350))
-    rating = db.Column(db.Float)
+    avg_rating = db.Column(db.Float)
     format = db.Column(db.String(50))
     image = db.Column(db.String(100), unique=True)
     num_pages = db.Column(db.Integer)
@@ -35,7 +35,7 @@ class Book(db.Model):
     def __init__(self, title, author, avg_rating, book_format, image, num_pages, pub_id):
         self.title = title
         self.author = author
-        self.rating = avg_rating
+        self.avg_rating = avg_rating
         self.format = book_format
         self.image = image
         self.num_pages = num_pages
